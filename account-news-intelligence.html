@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retail & Luxe Cyber Intelligence</title>
+  <style>
+    :root{--ink:#18072F;--muted:#6C6281;--bg:#F7F6FE;--card:#fff;--line:#E8E2FB;--gold:#04F06A;--navy:#250F6B;--red:#FF4D6D;--green:#04F06A;--blue:#451DC7;--vibrant:#451DC7;--shadow:0 22px 60px rgba(37,15,107,.14);--radius:24px}*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:radial-gradient(circle at top left,#fff 0,#F7F6FE 34%,#F0EDFF 72%)}header{padding:36px clamp(18px,4vw,54px) 18px}.hero{display:grid;grid-template-columns:1.4fr .6fr;gap:22px;align-items:stretch}.panel{background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px;backdrop-filter:blur(16px)}.eyebrow{color:var(--gold);font-weight:900;text-transform:uppercase;letter-spacing:.18em;font-size:12px}h1{font-size:clamp(34px,5vw,64px);line-height:.96;letter-spacing:-.06em;margin:12px 0}.lead{max-width:930px;color:var(--muted);font-size:16px;line-height:1.65}.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:22px}button,.chip,select,input{border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--navy);padding:11px 14px;font:inherit}button{cursor:pointer;font-weight:850;background:linear-gradient(135deg,var(--vibrant),var(--navy));color:#fff;box-shadow:0 12px 28px rgba(23,33,59,.18)}button.secondary{background:#fff;color:var(--navy);box-shadow:none}.status{font-size:13px;color:var(--muted)}.score{display:grid;gap:12px}.score b{font-size:44px;letter-spacing:-.05em}.score span{color:var(--muted);font-size:13px}.tabs{display:flex;gap:10px;flex-wrap:wrap;padding:0 clamp(18px,4vw,54px) 18px}.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 13px;cursor:pointer;font-weight:800;color:var(--navy);text-decoration:none;display:inline-flex}.tab.active{background:var(--navy);color:#fff}.main{padding:0 clamp(18px,4vw,54px) 52px}.grid{display:grid;grid-template-columns:340px 1fr;gap:22px}.filters{position:sticky;top:18px;align-self:start}.filters h2,.section h2{margin:0 0 10px;letter-spacing:-.035em}.filterGroup{margin-top:18px}.filterGroup label{display:block;color:var(--muted);font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.09em;margin-bottom:8px}.check{display:flex;align-items:center;gap:9px;margin:9px 0;color:var(--navy)}.check input{accent-color:var(--gold)}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 12px 34px rgba(23,33,59,.08)}.cardTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.brand{font-weight:950;color:var(--navy)}.date{font-size:12px;color:var(--muted);white-space:nowrap}.card h3{font-size:18px;line-height:1.25;margin:10px 0}.card p{color:var(--muted);line-height:1.5;font-size:14px}.meta{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}.badge{font-size:11px;font-weight:900;border-radius:999px;padding:6px 9px;background:#f3f0e8;color:var(--navy)}.badge.cyber{background:#ffe8eb;color:var(--red)}.badge.it{background:#e9f1ff;color:var(--blue)}.badge.business{background:#fff2d8;color:#8a5f15}.badge.risk{background:#e5f6f1;color:var(--green)}a.more{display:inline-flex;text-decoration:none;color:var(--navy);font-weight:900}.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:22px;background:#fff}.brief{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}.brief .panel{padding:16px}.brief b{font-size:28px}.brief span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.sources{font-size:12px;color:var(--muted);line-height:1.6;margin-top:16px}@media(max-width:1050px){.hero,.grid{grid-template-columns:1fr}.filters{position:relative;top:auto}.cards,.brief{grid-template-columns:1fr}}</style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <section class="panel">
+        <div class="eyebrow">Account intelligence · Retail, luxe & hospitality</div>
+        <h1>Veille business, IT & cyber des comptes stratégiques</h1>
+        <p class="lead">Tableau de bord conçu pour suivre LVMH, CHANEL, Richemont, Hermès, Accor et L'Oréal. Le bouton de rafraîchissement interroge Google Actualités RSS (via un proxy CORS public configurable) afin de remonter les articles récents et de les classer par compte, thème et angle business development.</p>
+        <div class="toolbar">
+          <button id="refreshBtn">↻ Rafraîchir l'actualité</button>
+          <span class="status" id="status">Prêt à lancer la veille.</span>
+        </div>
+      </section>
+      <aside class="panel score">
+        <div><span>Comptes surveillés</span><b id="accountCount">6</b></div>
+        <div><span>Articles affichés</span><b id="articleCount">0</b></div>
+        <div><span>Dernière mise à jour</span><b id="updatedAt">—</b></div>
+      </aside>
+    </div>
+  </header>
+
+  <nav class="tabs" id="accountTabs"></nav>
+
+  <main class="main">
+    <div class="grid">
+      <aside class="panel filters">
+        <h2>Filtres de veille</h2>
+        <p class="lead">Combinez comptes, thématiques et mots-clés pour prioriser les signaux actionnables.</p>
+        <div class="filterGroup"><label for="search">Recherche libre</label><input id="search" placeholder="ex: ransomware, cloud, acquisition" /></div>
+        <div class="filterGroup"><label>Thématiques</label><div id="topicFilters"></div></div>
+        <div class="filterGroup"><label for="days">Fenêtre temporelle</label><select id="days"><option value="7">7 derniers jours</option><option value="30" selected>30 derniers jours</option><option value="90">90 derniers jours</option></select></div>
+        <div class="filterGroup"><label for="sourceMode">Source dynamique</label><select id="sourceMode"><option value="google" selected>Google Actualités RSS</option><option value="google-cyber">Google Actualités RSS · focus cyber</option></select></div>
+        <div class="sources">Sources dynamiques: flux RSS Google Actualités par compte, récupérés via le proxy CORS public AllOrigins puis reliés aux articles originaux. En contexte entreprise, remplacez <code>RSS_PROXY</code> par votre proxy interne pour maîtriser disponibilité et conformité.</div>
+      </aside>
+      <section class="section">
+        <div class="brief">
+          <div class="panel"><b id="cyberCount">0</b><span>Signaux cyber / risque</span></div>
+          <div class="panel"><b id="itCount">0</b><span>Signaux IT / digital</span></div>
+          <div class="panel"><b id="bizCount">0</b><span>Signaux business</span></div>
+        </div>
+        <h2>Actualités prioritaires</h2>
+        <div class="cards" id="cards"></div>
+      </section>
+    </div>
+  </main>
+
+<script>
+const ACCOUNTS=['LVMH','CHANEL','Richemont','Hermès','Accor',"L'Oréal"];
+const TOPICS={cyber:['cyber','ransomware','breach','data leak','hack','fraud','privacy','security','CISO','vulnerability','DDoS','malware','NIS2'],it:['cloud','AI','IA','digital','ecommerce','omnichannel','SAP','data','CRM','technology','transformation','platform'],business:['results','revenue','acquisition','store','China','US','strategy','CEO','growth','market','quarter','sales','brand']};
+const RSS_PROXY='https://api.allorigins.win/raw?url=';
+let selectedAccount='Tous', selectedTopics=new Set(Object.keys(TOPICS)), articles=[];
+const fallback=[
+{account:'LVMH',topic:'business',title:'Signal business: ralentissement ou rebond par région à surveiller',url:'https://news.google.com/search?q=LVMH%20luxury%20business%20OR%20cybersecurity&hl=fr&gl=FR&ceid=FR:fr',source:'Google Actualités RSS',date:new Date().toISOString(),summary:'Flux Google Actualités à relancer: suivre résultats, exposition Chine/US, voyages retail et initiatives d\'excellence opérationnelle pour identifier les priorités cybersécurité des Maisons.'},
+{account:'CHANEL',topic:'it',title:'Signal IT: omnicanal, clienteling et protection des données clients',url:'https://news.google.com/search?q=CHANEL%20digital%20OR%20cybersecurity&hl=fr&gl=FR&ceid=FR:fr',source:'Google Actualités RSS',date:new Date().toISOString(),summary:'Flux Google Actualités à relancer: les investissements digitaux retail et CRM créent des angles IAM, segmentation réseau, privacy et gouvernance des tiers.'},
+{account:'Richemont',topic:'cyber',title:'Signal cyber: risque supply chain et e-commerce luxe',url:'https://news.google.com/search?q=Richemont%20cybersecurity%20OR%20ecommerce&hl=fr&gl=FR&ceid=FR:fr',source:'Google Actualités RSS',date:new Date().toISOString(),summary:'Flux Google Actualités à relancer: prioriser résilience e-commerce, partenaires logistiques et identités privilégiées dans un groupe multi-maisons.'},
+{account:'Hermès',topic:'business',title:'Signal business: croissance retail sélective et protection de la marque',url:'https://news.google.com/search?q=Herm%C3%A8s%20luxury%20business%20OR%20cybersecurity&hl=fr&gl=FR&ceid=FR:fr',source:'Google Actualités RSS',date:new Date().toISOString(),summary:'Flux Google Actualités à relancer: rareté produit et expérience boutique soutiennent des enjeux anti-fraude, anti-contrefaçon, SOC brand protection et résilience magasin.'},
+{account:'Accor',topic:'cyber',title:'Signal cyber: hôtellerie, données voyageurs et continuité opérationnelle',url:'https://news.google.com/search?q=Accor%20cybersecurity%20OR%20digital&hl=fr&gl=FR&ceid=FR:fr',source:'Google Actualités RSS',date:new Date().toISOString(),summary:'Flux Google Actualités à relancer: environnements hôteliers distribués, IAM B2B/B2E, sécurisation PMS/POS, gestion de crise et conformité privacy.'},
+{account:"L'Oréal",topic:'it',title:'Signal IT: beauty tech, IA et données consommateurs',url:'https://news.google.com/search?q=L%27Or%C3%A9al%20AI%20OR%20cybersecurity&hl=fr&gl=FR&ceid=FR:fr',source:'Google Actualités RSS',date:new Date().toISOString(),summary:'Flux Google Actualités à relancer: IA, e-commerce et personnalisation ouvrent des discussions data security, model governance, API security et consentement.'}
+];
+function init(){document.getElementById('accountTabs').innerHTML=['Tous',...ACCOUNTS].map(a=>`<a href="#" class="tab ${a===selectedAccount?'active':''}" data-account="${a}">${a}</a>`).join('');document.getElementById('topicFilters').innerHTML=Object.keys(TOPICS).map(t=>`<label class="check"><input type="checkbox" checked value="${t}"> ${label(t)}</label>`).join('');document.getElementById('accountTabs').onclick=e=>{if(e.target.dataset.account){e.preventDefault();selectedAccount=e.target.dataset.account;init();render();}};document.getElementById('topicFilters').onchange=()=>{selectedTopics=new Set([...document.querySelectorAll('#topicFilters input:checked')].map(i=>i.value));render();};document.getElementById('search').oninput=render;document.getElementById('days').onchange=refresh;document.getElementById('sourceMode').onchange=refresh;document.getElementById('refreshBtn').onclick=refresh;refresh();}
+function label(t){return {cyber:'Cyber / risque',it:'IT / digital',business:'Business / entreprise'}[t];}
+function normalize(value){return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+function classify(text){const lower=normalize(text);let best='business',score=0;for(const [topic,words] of Object.entries(TOPICS)){const s=words.reduce((n,w)=>n+(lower.includes(normalize(w))?1:0),0);if(s>score){score=s;best=topic;}}return best;}
+function buildGoogleNewsRssUrl(account){const mode=document.getElementById('sourceMode').value;const days=document.getElementById('days').value;const common=mode==='google-cyber'?'(cybersecurity OR ransomware OR breach OR hack OR privacy OR cloud OR AI OR digital)':'(business OR results OR acquisition OR strategy OR retail OR luxury OR digital OR cybersecurity OR AI)';const query=encodeURIComponent(`"${account}" ${common} when:${days}d`);return `https://news.google.com/rss/search?q=${query}&hl=fr&gl=FR&ceid=FR:fr`;}
+async function fetchGoogleRss(account){const rssUrl=buildGoogleNewsRssUrl(account);const res=await fetch(`${RSS_PROXY}${encodeURIComponent(rssUrl)}`);if(!res.ok)throw new Error(`${account}: ${res.status}`);const xml=new DOMParser().parseFromString(await res.text(),'text/xml');return [...xml.querySelectorAll('item')].slice(0,12).map(item=>{const title=item.querySelector('title')?.textContent||'Actualité sans titre';const link=item.querySelector('link')?.textContent||rssUrl;const source=item.querySelector('source')?.textContent||'Google Actualités';const date=item.querySelector('pubDate')?.textContent||new Date().toISOString();const description=item.querySelector('description')?.textContent||'';const topic=classify(`${title} ${description} ${source}`);const url=getArticleLink(link,description,rssUrl);return {account,topic,title,url,source,date,summary:makeSummary(account,topic,stripHtml(description)||title),rssUrl};});}
+async function refresh(){stamp('Recherche Google Actualités RSS en cours…');try{const batches=await Promise.all(ACCOUNTS.map(fetchGoogleRss));const seen=new Set();articles=batches.flat().filter(a=>{const key=a.url||a.title;if(seen.has(key))return false;seen.add(key);return true;}).sort((a,b)=>new Date(b.date)-new Date(a.date));if(!articles.length)articles=fallback;stamp(`${articles.length} articles récupérés depuis Google Actualités RSS.`);render();}catch(err){articles=fallback;stamp(`Flux RSS indisponible (${err.message}). Exemples Google Actualités affichés.`);render();}}
+function getArticleLink(link,description,rssUrl){const doc=new DOMParser().parseFromString(String(description||''),'text/html');const href=doc.querySelector('a[href]')?.getAttribute('href');if(href&&!href.includes('/rss/'))return href;if(link&&!link.includes('/rss/'))return link;return rssUrl.replace('/rss/search','/search');}
+function makeSummary(account,topic,raw){const clean=stripHtml(raw).replace(/\s+/g,' ').trim();const angle={cyber:'Angle BD: qualifier exposition risque, incidents, conformité, IAM, résilience et sécurité des tiers.',it:'Angle BD: relier transformation digitale, cloud, data et IA aux besoins de gouvernance et sécurisation.',business:'Angle BD: connecter croissance, marchés, M&A ou performance aux priorités de résilience cyber.'}[topic];return `${clean.slice(0,220)}${clean.length>220?'…':''} ${angle} Compte: ${account}.`;}
+function stripHtml(s){const doc=new DOMParser().parseFromString(String(s||''),'text/html');return doc.body.textContent||'';}
+function stamp(msg){document.getElementById('status').textContent=msg;document.getElementById('updatedAt').textContent=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});}
+function render(){const q=normalize(document.getElementById('search').value);const filtered=articles.filter(a=>(selectedAccount==='Tous'||a.account===selectedAccount)&&selectedTopics.has(a.topic)&&normalize(`${a.title} ${a.summary} ${a.source}`).includes(q));document.getElementById('articleCount').textContent=filtered.length;document.getElementById('cyberCount').textContent=filtered.filter(a=>a.topic==='cyber').length;document.getElementById('itCount').textContent=filtered.filter(a=>a.topic==='it').length;document.getElementById('bizCount').textContent=filtered.filter(a=>a.topic==='business').length;document.getElementById('cards').innerHTML=filtered.length?filtered.map(a=>`<article class="card"><div class="cardTop"><span class="brand">${a.account}</span><span class="date">${new Date(a.date).toLocaleDateString('fr-FR')}</span></div><h3>${escapeHtml(a.title)}</h3><p>${escapeHtml(a.summary)}</p><div class="meta"><span class="badge ${a.topic}">${label(a.topic)}</span><span class="badge">${escapeHtml(a.source)}</span></div><a class="more" href="${a.url}" target="_blank" rel="noopener">Lire la source →</a></article>`).join(''):'<div class="empty">Aucune actualité ne correspond aux filtres.</div>';}
+function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+init();
+</script>
+</body>
+</html>
